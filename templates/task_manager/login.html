@@ -1,0 +1,33 @@
+{% extends 'task_manager/base.html' %}
+{% load i18n %}
+
+{% block content %}
+<form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    <table border="1">
+        {{ form }}
+    </table>
+    <input type="submit" value="{% trans 'Войти' %}">
+</form>
+
+{% if messages %}
+<ul style="margin: 0 auto;">
+    {% for message in messages %}
+
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+    <li style="color: red;">
+        {{ message }}
+    </li>
+    {% endif %}
+
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+    <li style="color: green;">
+        {{ message }}
+    </li>
+    {% endif %}
+
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% endblock %}
