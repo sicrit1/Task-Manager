@@ -31,4 +31,3 @@ wheels/
 *.manifest
 *.spec
 poetry.lock
-Makefile

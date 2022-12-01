@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-30 09:55+0300\n"
+"POT-Creation-Date: 2022-12-01 10:02+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,47 +18,55 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: project/settings.py:151
+#: project/settings.py:152
 msgid "Английский"
 msgstr "English"
 
-#: project/settings.py:152
+#: project/settings.py:153
 msgid "Русский"
 msgstr "Russian"
 
-#: templates/index.html:11 templates/index.html:39
+#: templates/task_manager/base.html:11 templates/task_manager/base.html:37
 msgid "Менеджер задач"
 msgstr "Task Manager"
 
-#: templates/index.html:41
+#: templates/task_manager/create.html:10
+msgid "Создать"
+msgstr "Create"
+
+#: templates/task_manager/index.html:6
 msgid "Меню"
 msgstr "Menu"
 
-#: templates/index.html:43
+#: templates/task_manager/index.html:8
 msgid "Регистрация"
 msgstr "Registration"
 
-#: templates/index.html:44
+#: templates/task_manager/index.html:9
 msgid "Вход"
 msgstr "Sign in"
 
-#: templates/index.html:53
+#: templates/task_manager/index.html:10
+msgid "Список пользователей"
+msgstr "User list"
+
+#: templates/task_manager/index.html:17
 msgid "Добро пожаловать в Менеджер Задач"
 msgstr "Welcome to Task Manager"
 
-#: templates/index.html:54
+#: templates/task_manager/index.html:18
 msgid "Это приложение сделает Вашу жизнь лучше"
 msgstr "This app will make you life better"
 
-#: templates/index.html:55
+#: templates/task_manager/index.html:19
 msgid "Как это использовать"
 msgstr "How use it"
 
-#: templates/index.html:62
+#: templates/task_manager/index.html:26
 msgid "Как найти время для самого себя?"
 msgstr "How to find time for yourself?"
 
-#: templates/index.html:63
+#: templates/task_manager/index.html:27
 msgid ""
 "Это приложение поможет структурировать Вашу жизнь и позволит проводить "
 "больше времени с семьей и самим собой!"
@@ -66,9 +74,17 @@ msgstr ""
 "This application will help structure your life and allow you to spend more "
 "time with your family and yourself!"
 
-#: templates/index.html:64
+#: templates/task_manager/index.html:28
 msgid "Попробовать сейчас"
 msgstr "Try now"
+
+#: templates/task_manager/user_list.html:11
+msgid "Имя пользователя"
+msgstr "User name"
+
+#: templates/task_manager/user_list.html:12
+msgid "Полное имя"
+msgstr "Full name"
 
 #~ msgid "English"
 #~ msgstr "Английский"

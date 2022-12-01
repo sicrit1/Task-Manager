@@ -1,0 +1,23 @@
+{% extends 'task_manager/base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="jumbotron">
+    <div class="container">
+        <table style = "width: 100%;">
+            <tr>
+                <th>ID</th>
+                <th>{% trans "Имя пользователя" %}</th>
+                <th>{% trans "Полное имя" %}</th>
+            </tr>
+            {% for user in user_list %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.first_name }} {{ user.last_name }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}
