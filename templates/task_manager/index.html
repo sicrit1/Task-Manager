@@ -5,9 +5,16 @@
 <div class="collapse navbar-collapse" id="navbarsExampleDefault">
   <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% trans "Меню" %}</a>
   <div class="dropdown-menu" aria-labelledby="dropdown01">
+    <a class="dropdown-item" href="/users">{% trans "Список пользователей" %}</a>
+    {% if request.user.is_authenticated %}
+    <form method="post" action="{% url 'logout' %}" >
+      {% csrf_token %}
+      <input type="submit" class="dropdown-item" value="{% trans 'Выход' %}">
+    </form>
+    {% else %}
     <a class="dropdown-item" href="/users/create">{% trans "Регистрация" %}</a>
     <a class="dropdown-item" href="/login">{% trans "Вход" %}</a>
-    <a class="dropdown-item" href="/users">{% trans "Список пользователей" %}</a>
+    {% endif %}
   </div>
 </div>
 {% endblock %}

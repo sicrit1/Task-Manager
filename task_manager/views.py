@@ -2,9 +2,8 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.contrib.auth import get_user_model
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
-
-from task_manager.forms import UserForm, LoginUserForm
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 User = get_user_model()
@@ -27,37 +26,87 @@ class UserList(View):
 class UserCreate(View):
 
     def get(self, request, *args, **kwargs):
-        form = UserForm()
-        return render(request, 'task_manager/create.html', {'form': form})
+        return render(request, 'task_manager/create.html')
 
     def post(self, request, *args, **kwargs):
-        form = UserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.add_message(request, messages.SUCCESS, 'User was created successfully')
-            return redirect('login')
-        messages.add_message(request, messages.WARNING, "User didn't create")
-        return render(request, 'task_manager/create.html', {'form': form})
+        user_list = list(User.objects.values_list('username', flat=True))
+        username = request.POST['username']
+        password1 = request.POST['password1']
+        password2 = request.POST['password2']
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        if username in user_list:
+            messages.add_message(request, messages.WARNING, f'Такой пользователь уже существует')
+            return redirect('user_create')
+        if password1 != password2:
+            messages.add_message(request, messages.WARNING, f'Пароли не совпадают')
+            return redirect('user_create')
+        user = User.objects.create_user(username, password=password1, first_name=first_name, last_name=last_name)
+        messages.add_message(request, messages.SUCCESS, f'Пользователь {user.username} успешно создан')
+        return redirect('login')
 
 
 class UserLogin(View):
 
     def get(self, request, *args, **kwargs):
-        form = LoginUserForm()
-        return render(request, 'task_manager/login.html', {'form': form})
+        return render(request, 'task_manager/login.html')
 
     def post(self, request, *args, **kwargs):
-        form = LoginUserForm()
-        if form.is_valid():
-            username = request.POST['username']
-            password = request.POST['password']
-            user = authenticate(request, username=username, password=password)
-            if user:
-                login(request, user)
-                return redirect('home')
-            else:
-                messages.add_message(request, messages.WARNING, 'Invalid user')
-                return redirect('login')
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user:
+            login(request, user)
+            return redirect('home')
         else:
             messages.add_message(request, messages.WARNING, "Username or password doesn't correct")
             return redirect('login')
+
+
+class UserLogout(View):
+
+    def post(self, request, *args, **kwargs):
+        logout(request)
+        return redirect('login')
+
+
+class UserUpdate(LoginRequiredMixin, View):
+    login_url = 'login'
+
+    def get(self, request, *args, **kwargs):
+        user_id = kwargs.get('id')
+        user = User.objects.get(id=user_id)
+        return render(request, 'task_manager/update.html', {'user': user})
+
+    def post(self, request, *args, **kwargs):
+        user_id = kwargs.get('id')
+        user = User.objects.get(id=user_id)
+        user_list = list(User.objects.values_list('username', flat=True))
+        new_username = request.POST['username']
+        new_first_name = request.POST['first_name']
+        new_last_name = request.POST['last_name']
+        if new_username in user_list and new_username != user.username:
+            messages.add_message(request, messages.WARNING, f'Такой пользователь уже существует')
+            return redirect('update', user.id)
+        user.username = new_username
+        user.first_name = new_first_name
+        user.last_name = new_last_name
+        user.save()
+        messages.add_message(request, messages.SUCCESS, f'Пользователь {user.username} успешно изменен')
+        return redirect('users')
+
+
+class UserDelete(LoginRequiredMixin, View):
+    login_url = 'login'
+
+    def get(self, request, *args, **kwargs):
+        user_id = kwargs.get('id')
+        user = User.objects.get(id=user_id)
+        return render(request, 'task_manager/delete.html', {'user': user})
+
+    def post(self, request, *args, **kwargs):
+        user_id = kwargs.get('id')
+        user = User.objects.get(id=user_id)
+        if user:
+            user.delete()
+        return redirect('users')

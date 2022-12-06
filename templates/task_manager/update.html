@@ -1,0 +1,33 @@
+{% extends 'task_manager/base.html' %}
+{% load i18n %}
+
+{% block content %}
+<form action="{% url 'update' user.id %}" method="post">
+    {% csrf_token %}
+    <label for="username">Username:</label>
+    <input type="text" name="username" id="username" placeholder="Username" value="{{ user.username }}"><br>
+
+    <label for="first_name">First name:</label>
+    <input type="text" name="first_name" id="first_name" placeholder="First name" value="{{ user.first_name }}"><br>
+
+    <label for="last_name">Last name:</label>
+    <input type="text" name="last_name" id="last_name" placeholder="Last name" value="{{ user.last_name }}"><br>
+
+    <input type="submit" value="{% trans 'Обновить' %}">
+</form>
+
+{% if messages %}
+<ul style="margin: 0 auto;">
+    {% for message in messages %}
+
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+    <li style="color: red;">
+        {{ message }}
+    </li>
+    {% endif %}
+
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% endblock %}

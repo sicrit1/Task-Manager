@@ -15,9 +15,36 @@
                 <td>{{ user.id }}</td>
                 <td>{{ user.username }}</td>
                 <td>{{ user.first_name }} {{ user.last_name }}</td>
+                {% if request.user.is_authenticated and request.user.id == user.id %}
+                <td>
+                    <a href=" {% url 'update' user.id %}">Изменить</a>
+                    <a href=" {% url 'delete' user.id %}">Удалить</a>
+                </td>
+                {% endif %}
             </tr>
             {% endfor %}
         </table>
     </div>
 </div>
+
+{% if messages %}
+<ul style="margin: 0 auto;">
+    {% for message in messages %}
+
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+    <li style="color: red;">
+        {{ message }}
+    </li>
+    {% endif %}
+
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+    <li style="color: green;">
+        {{ message }}
+    </li>
+    {% endif %}
+
+    {% endfor %}
+</ul>
+{% endif %}
+
 {% endblock %}
