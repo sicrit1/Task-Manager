@@ -36,6 +36,7 @@
   <a class="navbar-brand" href="/">{% trans "Менеджер задач" %}</a>
   {% if request.user.is_authenticated %}
   <div class="navbar-brand">{{ request.user.username }}</div>
+  <a class="navbar-brand" href="/statuses">Статусы</a>
   {% endif %}
   {% block nav %}{% endblock %}
 </nav>

@@ -1,0 +1,27 @@
+{% extends 'task_manager/base.html' %}
+{% load i18n %}
+
+{% block content %}
+<form action="{% url 'statuses:statuses_update' status.id %}" method="post">
+  {% csrf_token %}
+  <label for="name">Name:</label>
+  <input type="text" name="name" id="name" placeholder="Name" value="{{ status.name }}"><br>
+
+  <input type="submit" value="{% trans 'Обновить' %}">
+</form>
+
+{% if messages %}
+<ul style="margin: 0 auto;">
+  {% for message in messages %}
+
+  {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+  <li style="color: red;">
+    {{ message }}
+  </li>
+  {% endif %}
+
+  {% endfor %}
+</ul>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'task_manager/base.html' %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="jumbotron">
+  <div class="container">
+    <table style = "width: 100%;">
+      <a href=" {% url 'statuses:statuses_create' %}">Создать статус</a>
+      <tr>
+        <th>ID</th>
+        <th>{% trans "Статусы" %}</th>
+        <th>{% trans "Дата создания" %}</th>
+      </tr>
+      {% for statuses in statuses_list %}
+      <tr>
+        <td>{{ statuses.id }}</td>
+        <td>{{ statuses.name }}</td>
+        <td>{{ statuses.pub_date }}</td>
+        <td>
+          <a href=" {% url 'statuses:statuses_update' statuses.id %}">Изменить</a>
+          <a href=" {% url 'statuses:statuses_delete' statuses.id %}">Удалить</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+{% if messages %}
+<ul style="margin: 0 auto;">
+  {% for message in messages %}
+
+  {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+  <li style="color: red;">
+    {{ message }}
+  </li>
+  {% endif %}
+
+  {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+  <li style="color: green;">
+    {{ message }}
+  </li>
+  {% endif %}
+
+  {% endfor %}
+</ul>
+{% endif %}
+
+{% endblock %}
