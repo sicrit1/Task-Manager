@@ -37,6 +37,10 @@ ALLOWED_HOSTS = [
     'webserver',
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://task-manager-zapadin.up.railway.app',
+]
+
 
 # Application definition
 
