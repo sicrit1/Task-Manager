@@ -26,7 +26,7 @@ class StatusesCreate(LoginRequiredMixin, View):
         statuses = Statuses(name=status_name)
         statuses.save()
         messages.add_message(request, messages.SUCCESS, f'Статус успешно создан')
-        return redirect('statuses')
+        return redirect('statuses:statuses')
 class StatusesUpdate(LoginRequiredMixin, View):
     login_url = 'login'
 

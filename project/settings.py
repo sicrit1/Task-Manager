@@ -33,6 +33,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '127.0.0.1',
     '.up.railway.app',
+    'task-manager-zapadin.up.railway.app',
     'webserver',
 ]
 
