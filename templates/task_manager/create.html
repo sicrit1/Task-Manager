@@ -4,22 +4,22 @@
 {% block content %}
 <form action="{% url 'user_create' %}" method="post">
     {% csrf_token %}
-    <label for="username">Username:</label>
-    <input type="text" name="username" id="username" placeholder="Username" value=""><br>
+    <label for="username">{% trans "Username" %}:</label>
+    <input type="text" name="username" id="username" placeholder="{% trans 'Username' %}" value=""><br>
 
-    <label for="first_name">First name:</label>
-    <input type="text" name="first_name" id="first_name" placeholder="First name" value=""><br>
+    <label for="first_name">{% trans "First name" %}:</label>
+    <input type="text" name="first_name" id="first_name" placeholder="{% trans 'First name' %}" value=""><br>
 
-    <label for="last_name">Last name:</label>
-    <input type="text" name="last_name" id="last_name" placeholder="Last name" value=""><br>
+    <label for="last_name">{% trans "Last name" %}:</label>
+    <input type="text" name="last_name" id="last_name" placeholder="{% trans 'Last name'%}" value=""><br>
 
-    <label for="password1">Пароль:</label>
-    <input type="password" name="password1" id="password1" placeholder="Пароль" value=""><br>
+    <label for="password1">{% trans "Password" %}:</label>
+    <input type="password" name="password1" id="password1" placeholder="{% trans 'Password'%}" value=""><br>
 
-    <label for="password2">Подтверждение пароля:</label>
-    <input type="password" name="password2" id="password2" placeholder="Подтверждение пароля" value=""><br>
+    <label for="password2">{% trans "Repeat password" %}</label>
+    <input type="password" name="password2" id="password2" placeholder="{% trans 'Repeat password' %}" value=""><br>
 
-    <input type="submit" value="{% trans 'Создать' %}">
+    <input type="submit" value="{% trans 'Create' %}">
 </form>
 
 {% if messages %}

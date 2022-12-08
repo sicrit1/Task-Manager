@@ -4,16 +4,16 @@
 {% block content %}
 <form action="{% url 'update' user.id %}" method="post">
     {% csrf_token %}
-    <label for="username">Username:</label>
-    <input type="text" name="username" id="username" placeholder="Username" value="{{ user.username }}"><br>
+    <label for="username">{% trans "Username" %}:</label>
+    <input type="text" name="username" id="username" placeholder="{% trans 'Username' %}" value="{{ user.username }}"><br>
 
-    <label for="first_name">First name:</label>
-    <input type="text" name="first_name" id="first_name" placeholder="First name" value="{{ user.first_name }}"><br>
+    <label for="first_name">{% trans "First name" %}:</label>
+    <input type="text" name="first_name" id="first_name" placeholder="{% trans 'First name' %}" value="{{ user.first_name }}"><br>
 
-    <label for="last_name">Last name:</label>
-    <input type="text" name="last_name" id="last_name" placeholder="Last name" value="{{ user.last_name }}"><br>
+    <label for="last_name">{% trans "Last name" %}:</label>
+    <input type="text" name="last_name" id="last_name" placeholder="{% trans 'Last name'%}" value="{{ user.last_name }}"><br>
 
-    <input type="submit" value="{% trans 'Обновить' %}">
+    <input type="submit" value="{% trans 'Update' %}">
 </form>
 
 {% if messages %}

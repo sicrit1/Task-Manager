@@ -3,17 +3,17 @@
 
 {% block nav %}
 <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-  <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% trans "Меню" %}</a>
+  <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% trans "Menu" %}</a>
   <div class="dropdown-menu" aria-labelledby="dropdown01">
-    <a class="dropdown-item" href="/users">{% trans "Список пользователей" %}</a>
+    <a class="dropdown-item" href="/users">{% trans "User list" %}</a>
     {% if request.user.is_authenticated %}
     <form method="post" action="{% url 'logout' %}" >
       {% csrf_token %}
-      <input type="submit" class="dropdown-item" value="{% trans 'Выход' %}">
+      <input type="submit" class="dropdown-item" value="{% trans 'Log out' %}">
     </form>
     {% else %}
-    <a class="dropdown-item" href="/users/create">{% trans "Регистрация" %}</a>
-    <a class="dropdown-item" href="/login">{% trans "Вход" %}</a>
+    <a class="dropdown-item" href="/users/create">{% trans "Registration" %}</a>
+    <a class="dropdown-item" href="/login">{% trans "Log in" %}</a>
     {% endif %}
   </div>
 </div>
@@ -21,18 +21,18 @@
 {% block content %}
   <div class="jumbotron">
     <div class="container">
-      <h1 class="display-3">{% trans "Добро пожаловать в Менеджер Задач" %}</h1>
-      <p>{% trans "Это приложение сделает Вашу жизнь лучше" %}</p>
-      <p><a class="btn btn-primary btn-lg" href="#" role="button">{% trans "Как это использовать" %} &raquo;</a></p>
+      <h1 class="display-3">{% trans "Welcome to Task Manager" %}</h1>
+      <p>{% trans "This app make you life bette" %}</p>
+      <p><a class="btn btn-primary btn-lg" href="#" role="button">{% trans "How can you use it?" %} &raquo;</a></p>
     </div>
   </div>
 
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-        <h2>{% trans "Как найти время для самого себя?" %}</h2>
-        <p>{% trans "Это приложение поможет структурировать Вашу жизнь и позволит проводить больше времени с семьей и самим собой!" %}</p>
-        <p><a class="btn btn-secondary" href="#" role="button">{% trans "Попробовать сейчас" %} &raquo;</a></p>
+        <h2>{% trans "How find time for youself?" %}</h2>
+        <p>{% trans "This app will help structure your life" %}</p>
+        <p><a class="btn btn-secondary" href="/users/create" role="button">{% trans "Try now" %} &raquo;</a></p>
       </div>
     </div>
   </div>

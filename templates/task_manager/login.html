@@ -4,13 +4,13 @@
 {% block content %}
 <form action="{% url 'login' %}" method="post">
     {% csrf_token %}
-    <label for="username">Username:</label>
-    <input type="text" name="username" id="username" placeholder="Username" value=""><br>
+    <label for="username">{% trans "Username" %}:</label>
+    <input type="text" name="username" id="username" placeholder="{% trans 'Username' %}" value=""><br>
 
-    <label for="password">Пароль:</label>
-    <input type="password" name="password" id="password" placeholder="Пароль" value=""><br>
+    <label for="password">{% trans "Password" %}:</label>
+    <input type="password" name="password" id="password" placeholder="{% trans 'Password' %}" value=""><br>
 
-    <input type="submit" value="{% trans 'Войти' %}">
+    <input type="submit" value="{% trans 'Enter' %}">
 </form>
 
 {% if messages %}

@@ -2,10 +2,10 @@
 {% load i18n %}
 
 {% block content %}
-<form action="{% url 'statuses:statuses_delete' status.id %}" method="post">
+<form action="{% url 'tasks:tasks_delete' task.id %}" method="post">
   {% csrf_token %}
   <p>
-    {% trans "Do you want delete status" %} - {{ status.name }}?
+    {% trans "Do you want delete task" %} - {{ task.name }}?
   </p>
 
   <input type="submit" value="{% trans 'Confirm deletion' %}">

@@ -47,6 +47,7 @@ CSRF_TRUSTED_ORIGINS = [
 INSTALLED_APPS = [
     'task_manager',
     'statuses',
+    'tasks',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -123,11 +124,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'ru'
+LANGUAGE_CODE = 'en'
 
 LANGUAGES = [
-    ('en', _('Английский')),
-    ('ru', _('Русский')),
+    ('en', _('English')),
+    ('ru', _('Russian')),
 ]
 
 LOCALE_PATHS = [Path(BASE_DIR, 'locale')]

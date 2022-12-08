@@ -4,10 +4,10 @@
 {% block content %}
 <form action="{% url 'statuses:statuses_update' status.id %}" method="post">
   {% csrf_token %}
-  <label for="name">Name:</label>
-  <input type="text" name="name" id="name" placeholder="Name" value="{{ status.name }}"><br>
+  <label for="name">{% trans "Name" %}:</label>
+  <input type="text" name="name" id="name" placeholder="{% trans 'Name' %}" value="{{ status.name }}"><br>
 
-  <input type="submit" value="{% trans 'Обновить' %}">
+  <input type="submit" value="{% trans 'Update' %}">
 </form>
 
 {% if messages %}

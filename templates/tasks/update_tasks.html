@@ -1,0 +1,47 @@
+{% extends 'task_manager/base.html' %}
+{% load i18n %}
+
+{% block content %}
+<form action="{% url 'tasks:tasks_update' task.id %}" method="post">
+  {% csrf_token %}
+  <label for="name">{% trans "Name" %}:</label>
+  <input type="text" name="name" id="name" placeholder="{% trans 'Name' %}" value="{{ task.name }}"><br>
+
+  <label for="description">{% trans "Description" %}:</label>
+  <input type="text" name="description" id="description" placeholder="{% trans 'Description' %}" value="{{ task.description }}"><br>
+
+  <label for="status">{% trans "Status" %}:</label>
+  <select name="status" id="status">
+    {% for status in statuses_list %}
+    <option value="{{ status.id }}">{{ status.name }}</option>
+    {% endfor %}
+  </select>
+  <br>
+
+  <label for="executor">{% trans "Executor" %}:</label>
+  <select name="executor" id="executor">
+    {% for user in user_list %}
+    <option value="{{ user.id }}">{{ user.username }}</option>
+    {% endfor %}
+  </select>
+  <br>
+
+  <input type="submit" value="{% trans 'Update' %}">
+</form>
+
+{% if messages %}
+<ul style="margin: 0 auto;">
+  {% for message in messages %}
+
+  {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+  <li style="color: red;">
+    {{ message }}
+  </li>
+  {% endif %}
+
+  {% endfor %}
+
+</ul>
+{% endif %}
+
+{% endblock %}

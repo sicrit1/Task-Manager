@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.utils.translation import gettext_lazy as _
 
 
 User = get_user_model()
@@ -36,13 +37,13 @@ class UserCreate(View):
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         if username in user_list:
-            messages.add_message(request, messages.WARNING, f'Такой пользователь уже существует')
+            messages.add_message(request, messages.WARNING, _(f'A user with the same username already exists'))
             return redirect('user_create')
         if password1 != password2:
-            messages.add_message(request, messages.WARNING, f'Пароли не совпадают')
+            messages.add_message(request, messages.WARNING, _(f'Passwords are not the same'))
             return redirect('user_create')
         user = User.objects.create_user(username, password=password1, first_name=first_name, last_name=last_name)
-        messages.add_message(request, messages.SUCCESS, f'Пользователь {user.username} успешно создан')
+        messages.add_message(request, messages.SUCCESS, _(f'User {user.username} was create successfully'))
         return redirect('login')
 
 
@@ -59,7 +60,7 @@ class UserLogin(View):
             login(request, user)
             return redirect('home')
         else:
-            messages.add_message(request, messages.WARNING, "Username or password doesn't correct")
+            messages.add_message(request, messages.WARNING, _("Username or password doesn't correct"))
             return redirect('login')
 
 
@@ -86,13 +87,13 @@ class UserUpdate(LoginRequiredMixin, View):
         new_first_name = request.POST['first_name']
         new_last_name = request.POST['last_name']
         if new_username in user_list and new_username != user.username:
-            messages.add_message(request, messages.WARNING, f'Такой пользователь уже существует')
+            messages.add_message(request, messages.WARNING, _(f'A user with the same username already exists'))
             return redirect('update', user.id)
         user.username = new_username
         user.first_name = new_first_name
         user.last_name = new_last_name
         user.save()
-        messages.add_message(request, messages.SUCCESS, f'Пользователь {user.username} успешно изменен')
+        messages.add_message(request, messages.SUCCESS, _(f'The User {user.username} was updated successfully'))
         return redirect('users')
 
 
