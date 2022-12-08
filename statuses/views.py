@@ -25,7 +25,7 @@ class StatusesCreate(LoginRequiredMixin, View):
         status_name = request.POST['status_name']
         statuses = Statuses(name=status_name)
         statuses.save()
-        messages.add_message(request, messages.SUCCESS, f'Status was created successfully')
+        messages.add_message(request, messages.SUCCESS, f'The status was created successfully')
         return redirect('statuses:statuses')
 
 
@@ -43,7 +43,7 @@ class StatusesUpdate(LoginRequiredMixin, View):
         new_name = request.POST['name']
         status.name = new_name
         status.save()
-        messages.add_message(request, messages.SUCCESS, f'Статус успешно изменен')
+        messages.add_message(request, messages.SUCCESS, f'The status was updated successfully')
         return redirect('statuses:statuses')
 
 

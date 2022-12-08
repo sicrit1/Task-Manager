@@ -1,0 +1,28 @@
+{% extends 'task_manager/base.html' %}
+{% load i18n %}
+
+{% block content %}
+<form action="{% url 'labels:labels_create' %}" method="post">
+  {% csrf_token %}
+  <label for="label_name">{% trans "Name" %}:</label>
+  <input type="text" name="label_name" id="label_name" placeholder="{% trans 'Name' %}" value=""><br>
+
+  <input type="submit" value="{% trans 'Create' %}">
+</form>
+
+{% if messages %}
+<ul style="margin: 0 auto;">
+  {% for message in messages %}
+
+  {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+  <li style="color: red;">
+    {{ message }}
+  </li>
+  {% endif %}
+
+  {% endfor %}
+
+</ul>
+{% endif %}
+
+{% endblock %}

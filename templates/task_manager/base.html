@@ -38,6 +38,7 @@
   <div class="navbar-brand">{{ request.user.username }}</div>
   <a class="navbar-brand" href="/statuses">{% trans "Statuses" %}</a>
   <a class="navbar-brand" href="/tasks">{% trans "Tasks" %}</a>
+  <a class="navbar-brand" href="/labels">{% trans "Labels" %}</a>
   {% endif %}
   {% block nav %}{% endblock %}
 </nav>

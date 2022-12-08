@@ -43,7 +43,7 @@ class UserCreate(View):
             messages.add_message(request, messages.WARNING, _(f'Passwords are not the same'))
             return redirect('user_create')
         user = User.objects.create_user(username, password=password1, first_name=first_name, last_name=last_name)
-        messages.add_message(request, messages.SUCCESS, _(f'User {user.username} was create successfully'))
+        messages.add_message(request, messages.SUCCESS, _(f'{user.username} was create successfully'))
         return redirect('login')
 
 

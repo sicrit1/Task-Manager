@@ -1,0 +1,50 @@
+{% extends 'task_manager/base.html' %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <div class="container">
+        <table style = "width: 100%;">
+            <a href=" {% url 'labels:labels_create' %}">{% trans "Create label"%}</a>
+            <tr>
+                <th>ID</th>
+                <th>{% trans "Labels" %}</th>
+                <th>{% trans "Creation date" %}</th>
+            </tr>
+            {% for label in labels_list %}
+            <tr>
+                <td>{{ label.id }}</td>
+                <td>{{ label.name }}</td>
+                <td>{{ label.pub_date }}</td>
+                <td>
+                    <a href=" {% url 'labels:labels_update' label.id %}">{% trans "Change" %}</a>
+                    <a href=" {% url 'labels:labels_delete' label.id %}">{% trans "Delete" %}</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+{% if messages %}
+<ul style="margin: 0 auto;">
+    {% for message in messages %}
+
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+    <li style="color: red;">
+        {{ message }}
+    </li>
+    {% endif %}
+
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+    <li style="color: green;">
+        {{ message }}
+    </li>
+    {% endif %}
+
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% endblock %}

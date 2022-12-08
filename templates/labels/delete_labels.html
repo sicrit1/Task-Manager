@@ -1,0 +1,14 @@
+{% extends 'task_manager/base.html' %}
+{% load i18n %}
+
+{% block content %}
+<form action="{% url 'labels:labels_delete' label.id %}" method="post">
+  {% csrf_token %}
+  <p>
+    {% trans "Do you want delete label" %} - {{ label.name }}?
+  </p>
+
+  <input type="submit" value="{% trans 'Confirm deletion' %}">
+</form>
+
+{% endblock %}
