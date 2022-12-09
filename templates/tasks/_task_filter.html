@@ -1,0 +1,31 @@
+{% load i18n %}
+
+<form action="{% url 'tasks:tasks' %}" method="get">
+
+    <label for="executor">{% trans "Executor" %}:</label>
+    <select name="executor" id="executor">
+        <option value="">---</option>
+        {% for user in user_list %}
+        <option value="{{ user.id }}">{{ user.username }}</option>
+        {% endfor %}
+    </select>
+
+
+    <label for="status">{% trans "Status" %}:</label>
+    <select name="status" id="status">
+        <option value="">---</option>
+        {% for status in statuses_list %}
+        <option value="{{ status.id }}">{{ status.name }}</option>
+        {% endfor %}
+    </select>
+<!--    <br>-->
+
+    <label for="label">{% trans "Label" %}:</label>
+    <select name="label" id="label" multiple>
+        {% for label in labels_list %}
+        <option value="{{ label.id }}">{{ label.name }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <input type="submit" value="Filter">
+</form>

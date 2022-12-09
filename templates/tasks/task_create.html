@@ -10,6 +10,14 @@
   <label for="description">{% trans "Description" %}:</label>
   <input type="text" name="description" id="description" placeholder="{% trans 'Description' %}" value=""><br>
 
+  <label for="executor">{% trans "Executor" %}:</label>
+  <select name="executor" id="executor">
+    {% for user in user_list %}
+    <option value="{{ user.id }}">{{ user.username }}</option>
+    {% endfor %}
+  </select>
+  <br>
+
   <label for="status">{% trans "Status" %}:</label>
   <select name="status" id="status">
     {% for status in statuses_list %}
@@ -18,10 +26,10 @@
   </select>
   <br>
 
-  <label for="executor">{% trans "Executor" %}:</label>
-  <select name="executor" id="executor">
-    {% for user in user_list %}
-    <option value="{{ user.id }}">{{ user.username }}</option>
+  <label for="label">{% trans "Label" %}:</label>
+  <select name="label" id="label" multiple>
+    {% for label in labels_list %}
+    <option value="{{ label.id }}">{{ label.name }}</option>
     {% endfor %}
   </select>
   <br>

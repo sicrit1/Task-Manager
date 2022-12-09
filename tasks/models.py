@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from labels.models import Labels
 from statuses.models import Statuses
 from django.contrib.auth import get_user_model
 
@@ -36,10 +37,18 @@ class Tasks(models.Model):
         on_delete=models.PROTECT,
         verbose_name=_('status'),
     )
+    labels = models.ManyToManyField(
+        Labels,
+        related_name='tasks',
+        verbose_name=_('labels'),
+    )
     pub_date = models.DateTimeField(
         auto_now_add=True,
         verbose_name=_('creation date'),
     )
+
+    def get_labels(self):
+        return list(self.labels.values_list('name', flat=True))
 
 
     def __str__(self) -> str:

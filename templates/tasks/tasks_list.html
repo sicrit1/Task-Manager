@@ -4,6 +4,7 @@
 {% block content %}
 
 <div class="jumbotron">
+  {% include 'tasks/_task_filter.html' %}
   <div class="container">
     <table style = "width: 100%;">
       <a href=" {% url 'tasks:tasks_create' %}">{% trans "Create task"%}</a>
@@ -14,6 +15,7 @@
         <th>{% trans "Status" %}</th>
         <th>{% trans "Author" %}</th>
         <th>{% trans "Executor" %}</th>
+        <th>{% trans "Labels" %}</th>
         <th>{% trans "Creation date" %}</th>
       </tr>
       {% for task in tasks_list %}
@@ -24,6 +26,7 @@
         <td>{{ task.status }}</td>
         <td>{{ task.author }}</td>
         <td>{{ task.executor }}</td>
+        <td>{{ task.get_labels | join:", " }}</td>
         <td>{{ task.pub_date }}</td>
         <td>
           <a href=" {% url 'tasks:tasks_update' task.id %}">{% trans "Change" %}</a>
