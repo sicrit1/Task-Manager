@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-07 16:56+0300\n"
+"POT-Creation-Date: 2022-12-09 16:20+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,176 +16,262 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
-#: project/settings.py:130
-msgid "English"
-msgstr ""
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: labels/models.py:9 statuses/models.py:8 tasks/models.py:16
+msgid "name"
+msgstr "имя"
+
+#: labels/models.py:13 statuses/models.py:12 tasks/models.py:47
+msgid "creation date"
+msgstr "дата создания"
 
 #: project/settings.py:131
+msgid "English"
+msgstr "Английский"
+
+#: project/settings.py:132
 msgid "Russian"
-msgstr ""
-
-#: statuses/models.py:8
-msgid "name"
-msgstr ""
-
-#: statuses/models.py:12
-msgid "creation date"
-msgstr ""
+msgstr "Русский"
 
 #: task_manager/views.py:40 task_manager/views.py:90
 msgid "A user with the same username already exists"
-msgstr ""
+msgstr "Пользователь с таким именем уже существует"
 
 #: task_manager/views.py:43
 msgid "Passwords are not the same"
-msgstr ""
+msgstr "Пароли не совпадают"
 
 #: task_manager/views.py:46
 #, python-brace-format
-msgid "User {user.username} was create successfully"
-msgstr ""
+msgid "{user.username} was create successfully"
+msgstr "{user.username} был успешно создан"
 
 #: task_manager/views.py:63
 msgid "Username or password doesn't correct"
-msgstr ""
+msgstr "Имя пользователя или пароль введен не корректно"
 
 #: task_manager/views.py:96
 #, python-brace-format
 msgid "The User {user.username} was updated successfully"
-msgstr ""
+msgstr "Пользователь {user.username} успешно обновлен"
 
+#: tasks/models.py:21
+msgid "description"
+msgstr "описание"
+
+#: tasks/models.py:27
+msgid "author"
+msgstr "автор"
+
+#: tasks/models.py:33
+msgid "executor"
+msgstr "испольнитель"
+
+#: tasks/models.py:38
+msgid "status"
+msgstr "статус"
+
+#: tasks/models.py:43
+msgid "labels"
+msgstr "метки"
+
+#: templates/labels/create_labels.html:7 templates/labels/create_labels.html:8
+#: templates/labels/update_labels.html:7 templates/labels/update_labels.html:8
 #: templates/statuses/create_status.html:7
 #: templates/statuses/create_status.html:8
 #: templates/statuses/update_statuses.html:7
-#: templates/statuses/update_statuses.html:8
+#: templates/statuses/update_statuses.html:8 templates/tasks/task_create.html:7
+#: templates/tasks/task_create.html:8 templates/tasks/tasks_list.html:13
+#: templates/tasks/update_tasks.html:7 templates/tasks/update_tasks.html:8
 msgid "Name"
-msgstr ""
+msgstr "Имя"
 
+#: templates/labels/create_labels.html:10
 #: templates/statuses/create_status.html:10
-#: templates/task_manager/create.html:22
+#: templates/task_manager/create.html:22 templates/tasks/task_create.html:37
 msgid "Create"
-msgstr ""
+msgstr "Создать"
+
+#: templates/labels/delete_labels.html:8
+msgid "Do you want delete label"
+msgstr "Хотите удалить метку"
+
+#: templates/labels/delete_labels.html:11
+#: templates/statuses/delete_statuses.html:11
+#: templates/task_manager/delete.html:11 templates/tasks/tasks_delete.html:11
+msgid "Confirm deletion"
+msgstr "Подтвердить удаление"
+
+#: templates/labels/labels_list.html:9
+msgid "Create label"
+msgstr "Создать метку"
+
+#: templates/labels/labels_list.html:12 templates/task_manager/base.html:41
+#: templates/tasks/tasks_list.html:18
+msgid "Labels"
+msgstr "Метки"
+
+#: templates/labels/labels_list.html:13
+#: templates/statuses/statuses_list.html:13 templates/tasks/tasks_list.html:19
+msgid "Creation date"
+msgstr "Дата создания"
+
+#: templates/labels/labels_list.html:21
+#: templates/statuses/statuses_list.html:21
+#: templates/task_manager/user_list.html:20 templates/tasks/tasks_list.html:32
+msgid "Change"
+msgstr "Изменить"
+
+#: templates/labels/labels_list.html:22
+#: templates/statuses/statuses_list.html:22
+#: templates/task_manager/user_list.html:21 templates/tasks/tasks_list.html:33
+msgid "Delete"
+msgstr "Удалить"
+
+#: templates/labels/update_labels.html:10
+#: templates/statuses/update_statuses.html:10
+#: templates/task_manager/update.html:16 templates/tasks/update_tasks.html:37
+msgid "Update"
+msgstr "Обновить"
 
 #: templates/statuses/delete_statuses.html:8
 msgid "Do you want delete status"
-msgstr ""
-
-#: templates/statuses/delete_statuses.html:11
-#: templates/task_manager/delete.html:11
-msgid "Confirm deletion"
-msgstr ""
+msgstr "Вы хотите удалить статус"
 
 #: templates/statuses/statuses_list.html:9
 msgid "Create status"
-msgstr ""
+msgstr "Создать статус"
 
-#: templates/statuses/statuses_list.html:12
+#: templates/statuses/statuses_list.html:12 templates/task_manager/base.html:39
 msgid "Statuses"
-msgstr ""
-
-#: templates/statuses/statuses_list.html:13
-msgid "Creation date"
-msgstr ""
-
-#: templates/statuses/statuses_list.html:21
-#: templates/task_manager/user_list.html:20
-msgid "Change"
-msgstr ""
-
-#: templates/statuses/statuses_list.html:22
-#: templates/task_manager/user_list.html:21
-msgid "Delete"
-msgstr ""
-
-#: templates/statuses/update_statuses.html:10
-#: templates/task_manager/update.html:16
-msgid "Update"
-msgstr ""
+msgstr "Статусы"
 
 #: templates/task_manager/base.html:10 templates/task_manager/base.html:36
 msgid "Task Manager"
-msgstr ""
+msgstr "Менеджер задач"
+
+#: templates/task_manager/base.html:40
+msgid "Tasks"
+msgstr "Задачи"
 
 #: templates/task_manager/create.html:7 templates/task_manager/create.html:8
 #: templates/task_manager/login.html:7 templates/task_manager/login.html:8
 #: templates/task_manager/update.html:7 templates/task_manager/update.html:8
 msgid "Username"
-msgstr ""
+msgstr "Имя пользователя"
 
 #: templates/task_manager/create.html:10 templates/task_manager/create.html:11
 #: templates/task_manager/update.html:10 templates/task_manager/update.html:11
 msgid "First name"
-msgstr ""
+msgstr "Имя"
 
 #: templates/task_manager/create.html:13 templates/task_manager/create.html:14
 #: templates/task_manager/update.html:13 templates/task_manager/update.html:14
 msgid "Last name"
-msgstr ""
+msgstr "Фамилия"
 
 #: templates/task_manager/create.html:16 templates/task_manager/create.html:17
 #: templates/task_manager/login.html:10 templates/task_manager/login.html:11
 msgid "Password"
-msgstr ""
+msgstr "Пароль"
 
 #: templates/task_manager/create.html:19 templates/task_manager/create.html:20
 msgid "Repeat password"
-msgstr ""
+msgstr "Повторить паспорт"
 
 #: templates/task_manager/index.html:6
 msgid "Menu"
-msgstr ""
+msgstr "Меню"
 
 #: templates/task_manager/index.html:8
 msgid "User list"
-msgstr ""
+msgstr "Список пользователей"
 
 #: templates/task_manager/index.html:12
 msgid "Log out"
-msgstr ""
+msgstr "Выйти"
 
 #: templates/task_manager/index.html:15
 msgid "Registration"
-msgstr ""
+msgstr "Регистрация"
 
 #: templates/task_manager/index.html:16
 msgid "Log in"
-msgstr ""
+msgstr "Войти"
 
 #: templates/task_manager/index.html:24
 msgid "Welcome to Task Manager"
-msgstr ""
+msgstr "Добро пожаловать в Менеджер задач"
 
 #: templates/task_manager/index.html:25
-msgid "This app make you life bette"
-msgstr ""
+#, fuzzy
+msgid "This app make you life better"
+msgstr "Это приложение сделае Вашу жизнь лучше"
 
 #: templates/task_manager/index.html:26
 msgid "How can you use it?"
-msgstr ""
+msgstr "Как это использовать?"
 
 #: templates/task_manager/index.html:33
-msgid "How find time for youself?"
-msgstr ""
+msgid "How find time for yourself?"
+msgstr "Как найти время для себя?"
 
 #: templates/task_manager/index.html:34
 msgid "This app will help structure your life"
-msgstr ""
+msgstr "Это приложение поможет структурировать Вашу жизнь"
 
 #: templates/task_manager/index.html:35
 msgid "Try now"
-msgstr ""
+msgstr "Попробовать сейчас"
 
 #: templates/task_manager/login.html:13
 msgid "Enter"
-msgstr ""
+msgstr "Войти"
 
 #: templates/task_manager/user_list.html:10
 msgid "User name"
-msgstr ""
+msgstr "Имя пользователя"
 
 #: templates/task_manager/user_list.html:11
 msgid "Full name"
-msgstr ""
+msgstr "Полное имя"
+
+#: templates/tasks/_task_filter.html:5 templates/tasks/task_create.html:13
+#: templates/tasks/tasks_list.html:17 templates/tasks/update_tasks.html:13
+msgid "Executor"
+msgstr "Исполнитель"
+
+#: templates/tasks/_task_filter.html:14 templates/tasks/task_create.html:21
+#: templates/tasks/tasks_list.html:15 templates/tasks/update_tasks.html:21
+msgid "Status"
+msgstr "Статус"
+
+#: templates/tasks/_task_filter.html:23 templates/tasks/task_create.html:29
+#: templates/tasks/update_tasks.html:29
+msgid "Label"
+msgstr "Метка"
+
+#: templates/tasks/_task_filter.html:30
+msgid "Filter"
+msgstr "Фильтровать"
+
+#: templates/tasks/task_create.html:10 templates/tasks/task_create.html:11
+#: templates/tasks/tasks_list.html:14 templates/tasks/update_tasks.html:10
+#: templates/tasks/update_tasks.html:11
+msgid "Description"
+msgstr "Описание"
+
+#: templates/tasks/tasks_delete.html:8
+msgid "Do you want delete task"
+msgstr "Хотите удалить задачу"
+
+#: templates/tasks/tasks_list.html:10
+msgid "Create task"
+msgstr "Создать задачу"
+
+#: templates/tasks/tasks_list.html:16
+msgid "Author"
+msgstr "Автор"

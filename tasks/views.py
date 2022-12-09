@@ -30,8 +30,8 @@ class TasksView(LoginRequiredMixin, View):
         return render(request, 'tasks/tasks_list.html', context=context)
 
     def filter(self):
-        status_id = self.request.GET['status']
-        executor_id = self.request.GET['executor']
+        status_id = self.request.GET.get('status')
+        executor_id = self.request.GET.get('executor')
         labels = self.request.GET.getlist('label')
         print(self.request.GET)
         qs = Tasks.objects.all()
@@ -63,8 +63,8 @@ class TasksCreate(LoginRequiredMixin, View):
         description = request.POST['description']
         executor_id = request.POST['executor']
         status_id = request.POST['status']
-        label_id = request.POST['label']  # todo: fix it
-        # author = User.objects.get(id=request.user.id)
+        label_list = request.POST.getlist('label')
+        labels = Labels.objects.filter(id__in=label_list)
         task = Tasks.objects.create(
             name=name,
             description=description,
@@ -72,8 +72,7 @@ class TasksCreate(LoginRequiredMixin, View):
             executor_id=executor_id,
             author_id=request.user.id,
         )
-        label = Labels.objects.get(id=label_id)
-        task.labels.add(label)
+        task.labels.add(*list(labels))
         messages.add_message(request, messages.SUCCESS, f'The task was created successfully')
         return redirect('tasks:tasks')
 
@@ -103,9 +102,7 @@ class TasksUpdate(LoginRequiredMixin, View):
         executor = User.objects.get(id=request.POST['executor'])
         status = Statuses.objects.get(id=request.POST['status'])
         label_list = request.POST.getlist('label')
-        print(label_list)
         labels = Labels.objects.filter(id__in=label_list)
-        print(labels)
 
         task.name = name
         task.description = description
